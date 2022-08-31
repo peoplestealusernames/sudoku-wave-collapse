@@ -79,7 +79,7 @@ function App() {
 
   return (
     <div className="App">
-      <LeftPanel Table={Table} />
+      <LeftPanel Table={Table} SetTable={setTable} />
       <div id="board" style={{ display: "table" }}>
         {Table.map((row, rowi) =>
           <div

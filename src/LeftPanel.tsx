@@ -4,6 +4,7 @@ import { useState, useEffect } from "react"
 
 export function LeftPanel(props: {
     Table: boolean[][][]
+    SetTable: (Table: boolean[][][]) => void
 }) {
     const [locked, setlocked] = useState<number>(0)
     const [remaining, setremaining] = useState<number>(0)
