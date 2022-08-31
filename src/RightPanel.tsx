@@ -1,7 +1,4 @@
-import { useState, useEffect } from "react"
 import { GetAllowed, GetRandomValue } from "./misc"
-
-
 
 export function RightPanel(props: {
     Table: boolean[][][]
