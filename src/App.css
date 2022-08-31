@@ -26,6 +26,7 @@
   align-items: center;
   background-color: rgb(25, 25, 35);
   border: 3px solid black;
+  user-select: none;
 }
 
 .RightPanel {
@@ -45,6 +46,7 @@
   align-items: center;
   background-color: rgb(25, 25, 35);
   border: 3px solid black;
+  user-select: none;
 }
 
 .Cell {
