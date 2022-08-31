@@ -28,6 +28,25 @@
   border: 3px solid black;
 }
 
+.RightPanel {
+  display: flex;
+  color: rgb(200, 200, 200);
+  flex-direction: column;
+  text-align: center;
+  position: absolute;
+  right: 0px;
+  margin: 20px;
+  min-width: 15vw;
+  padding: 10px;
+  display: flex;
+  min-height: 75vh;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  background-color: rgb(25, 25, 35);
+  border: 3px solid black;
+}
+
 .Cell {
   display: table-cell;
   width: fit-content;
