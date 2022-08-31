@@ -16,6 +16,8 @@ function App() {
         Table[row][i] = 0
       }
     }
+
+    setTable([...Table])
   }, [])
 
   return (
