@@ -18,4 +18,5 @@
   vertical-align: middle;
   background-color: rgb(140, 140, 140);
   border: 1px solid black;
+  user-select: none;
 }
