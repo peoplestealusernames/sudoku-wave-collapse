@@ -3,8 +3,6 @@ import './App.css';
 import { LeftPanel } from './LeftPanel';
 import { RightPanel } from './RightPanel';
 
-type sudokuN = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
-
 function App() {
   const [Table, setTable] = useState<boolean[][][]>(
     [...new Array(9)].map(() =>
@@ -16,7 +14,7 @@ function App() {
     )
   ) //True= placeable
 
-  function UpdateTable(row: number, column: number, n: sudokuN) {
+  function UpdateTable(row: number, column: number, n: number) {
     Table[row][column].forEach((v, i) => Table[row][column][i] = false)
 
     for (let i = 0; i < 9; i++)
@@ -29,13 +27,13 @@ function App() {
     Table[row][column][n] = true
   }
 
-  function UpdateCell(gridrow: number, gridcolumn: number, n: sudokuN) {
+  function UpdateCell(gridrow: number, gridcolumn: number, n: number) {
     for (let r = 0; r < 3; r++)
       for (let c = 0; c < 3; c++)
         DissableCell(r + gridrow * 3, c + gridcolumn * 3, n)
   }
 
-  function DissableCell(row: number, column: number, n: sudokuN) {
+  function DissableCell(row: number, column: number, n: number) {
     if (Table[row][column][n] === false)
       return
 
@@ -43,7 +41,7 @@ function App() {
 
     const allowed = GetAllowed(row, column)
     if (allowed.length === 1)
-      UpdateTable(row, column, allowed[0] as sudokuN)
+      UpdateTable(row, column, allowed[0] as number)
 
   }
 
@@ -67,7 +65,7 @@ function App() {
               if (!Table[props.row][props.col][i])
                 throw new Error("Cannot place here")
 
-              UpdateTable(props.row, props.col, i as sudokuN)
+              UpdateTable(props.row, props.col, i as number)
               setTable([...Table])
             }}
           >
