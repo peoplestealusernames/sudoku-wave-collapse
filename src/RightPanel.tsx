@@ -1,6 +1,13 @@
 import { useEffect, useState } from "react"
 import { GetAllowed, GetRandomValue } from "./misc"
 
+const ButtonStyle: React.CSSProperties = {
+    margin: "1px",
+    padding: "2px",
+    border: "1px solid rgb(60,60,75)",
+    borderRadius: "5px",
+}
+
 export function RightPanel(props: {
     Table: boolean[][][]
     CallUpdate: (row: number, col: number, n: number) => void
@@ -43,16 +50,19 @@ export function RightPanel(props: {
 
     return <div id="right panel" className="RightPanel">
         <div
+            style={ButtonStyle}
             onClick={() => { while (true) { Step() } }}
         >
             Collapse
         </div>
         <div
+            style={ButtonStyle}
             onClick={ToggleTimer}
         >
             Toggle collapse
         </div>
         <div
+            style={ButtonStyle}
             onClick={Step}
         >
             Step Collapse
