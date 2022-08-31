@@ -16,6 +16,11 @@ function App() {
 
   return (
     <div className="App">
+      <div style={{ position: "absolute", top: "0px", border: "1px solid black" }}>
+        {[...new Array(8)].map((e, i) => {
+          return <div className='Cell' key={i}>{i + 1}</div>
+        })}
+      </div>
       <div style={{ display: "table" }}>
         {Table.map((row, rowi) =>
           <div
