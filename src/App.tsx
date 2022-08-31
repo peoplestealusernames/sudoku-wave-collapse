@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
@@ -6,6 +6,8 @@ type sudokuN = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
 
 function App() {
   const Table: sudokuN[][] = []
+
+  const [selected, setselected] = useState<sudokuN>(0)
 
   for (let row = 0; row < 9; row++) {
     Table[row] = []
@@ -18,7 +20,14 @@ function App() {
     <div className="App">
       <div style={{ position: "absolute", top: "0px", border: "1px solid black" }}>
         {[...new Array(8)].map((e, i) => {
-          return <div className='Cell' key={i}>{i + 1}</div>
+          return <div
+            className='Cell'
+            key={i}
+            style={{ backgroundColor: i + 1 === selected ? "red" : "white" }}
+            onClick={() => { setselected((i + 1) as sudokuN) }}
+          >
+            {i + 1}
+          </div>
         })}
       </div>
       <div style={{ display: "table" }}>
