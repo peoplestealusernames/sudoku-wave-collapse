@@ -21,7 +21,7 @@ function App() {
           <div key={rowi} style={{ display: "table-row" }}>
             {row.map((n, i) => {
               return <div
-                style={{ display: "table-cell" }}
+                className="Cell"
                 key={i}
               >
                 {n}

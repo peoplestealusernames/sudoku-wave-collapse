@@ -7,3 +7,15 @@
   align-content: center;
   align-items: center;
 }
+
+.Cell {
+  display: table-cell;
+  width: 25px;
+  height: 25px;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  vertical-align: middle;
+  background-color: rgb(140, 140, 140);
+  border: 2px solid black;
+}
