@@ -43,14 +43,19 @@ export function RightPanel(props: {
 
     return <div id="right panel" className="RightPanel">
         <div
-            onClick={Step}
+            onClick={() => { while (true) { Step() } }}
         >
-            Collapse step
+            Collapse
         </div>
         <div
             onClick={ToggleTimer}
         >
             Toggle collapse
+        </div>
+        <div
+            onClick={Step}
+        >
+            Step Collapse
         </div>
     </div>
 }
