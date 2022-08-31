@@ -1,21 +1,56 @@
+import { useEffect, useState } from "react"
 import { GetAllowed, GetRandomValue } from "./misc"
 
 export function RightPanel(props: {
     Table: boolean[][][]
     CallUpdate: (row: number, col: number, n: number) => void
 }) {
+    const [timer, settimer] = useState<undefined | NodeJS.Timer>(undefined)
+
+    function Step() {
+        const [worked, pass] = SolveStep(props.Table)
+
+        if (!worked || !pass)
+            throw new Error("Could not step")
+        props.CallUpdate(...pass)
+    }
+
+    function ToggleTimer() {
+        if (timer)
+            clearTimer()
+        else {
+            const t = setInterval(() => {
+                try { Step() } catch (e) {
+                    clearInterval(t)
+                    clearTimer()
+                    console.error("Passing error from stepTimer: \n" + e)
+                }
+            }, 100)
+            settimer(t)
+        }
+    }
+
+    useEffect(() => {
+        return () => {
+            clearTimer()
+        }
+    }, [])
+
+    function clearTimer() {
+        clearTimeout(timer)
+        settimer(undefined)
+    }
 
     return <div id="right panel" className="RightPanel">
         <div
-            onClick={() => {
-                const [worked, pass] = SolveStep(props.Table)
-
-                if (!worked || !pass)
-                    throw new Error("Could not step")
-                props.CallUpdate(...pass)
-            }}
+            onClick={Step}
         >
             Collapse step
+        </div>
+        <div
+            onClick={ToggleTimer}
+        >
+            Toggle collapse
         </div>
     </div>
 }
