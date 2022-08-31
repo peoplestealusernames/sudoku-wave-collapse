@@ -5,21 +5,15 @@ import './App.css';
 type sudokuN = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
 
 function App() {
-  const [Table, setTable] = useState<boolean[][][]>([]) //True= placeable
-
-  useMemo(() => {
-    for (let row = 0; row < 9; row++) {
-      Table[row] = []
-      for (let col = 0; col < 9; col++) {
-        Table[row][col] = []
-        for (let i = 1; i < 10; i++) {
-          Table[row][col][i] = true
-        }
-      }
-    }
-
-    setTable([...Table])
-  }, [])
+  const [Table, setTable] = useState<boolean[][][]>(
+    [...new Array(9)].map(() =>
+      [...new Array(9)].map(() =>
+        [...new Array(10)].map((e, i) =>
+          i !== 0
+        )
+      )
+    )
+  ) //True= placeable
 
   function UpdateTable(row: number, column: number, n: sudokuN) {
     Table[row][column].forEach((v, i) => Table[row][column][i] = false)
