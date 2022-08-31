@@ -85,10 +85,16 @@ function App() {
             style={{ display: "table-row" }}
           >
             {row.map((n, i) => {
+              const percent = (GetAllowed(rowi, i).length - 1) / 8
+
+              const r = 255 * (1 - percent)
+              const g = 255 * percent
+
               return <div
                 key={i}
                 className="Cell"
                 style={{
+                  backgroundColor: `rgb(${r}, ${g}, 0)`,
                   ...rowi % 3 === 0 ? { borderTop: "3px solid black" } : {},
                   ...rowi % 3 === 2 ? { borderBottom: "3px solid black" } : {},
                   ...i % 3 === 0 ? { borderLeft: "3px solid black" } : {},

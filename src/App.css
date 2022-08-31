@@ -16,7 +16,6 @@
   align-items: center;
   align-content: center;
   vertical-align: middle;
-  background-color: rgb(140, 140, 140);
   border: 1px solid black;
   user-select: none;
 }
@@ -30,7 +29,6 @@
   align-items: center;
   align-content: center;
   vertical-align: middle;
-  background-color: rgb(200, 200, 220);
   border: 1px solid rgb(25, 25, 75);
   user-select: none;
 }
