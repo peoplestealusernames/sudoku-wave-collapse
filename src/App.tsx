@@ -44,16 +44,26 @@ function App() {
 
   function Cell(props: {
     row: number,
-    col: number
+    col: number,
   }) {
     const Allowed = Table[props.row][props.col]
 
-    //{Allowed[col + row * 3] ? col + row * 3 : ""}
     return <div style={{ display: "table" }}>
       {[...new Array(3)].map((e, row) => <div key={row} style={{ display: "table-row" }}>
-        {[...new Array(3)].map((e, col) => <div key={col} className="CellSelect">
-          {Allowed[1 + col + row * 3] ? 1 + col + row * 3 : ""}
-        </div>)}
+        {[...new Array(3)].map((e, col) => {
+          const i = 1 + col + row * 3
+          return <div key={col} className="CellSelect"
+            onClick={() => {
+              if (!Table[props.row][props.col][i])
+                throw new Error("Cannot place here")
+
+              UpdateTable(props.row, props.col, i as sudokuN)
+              setTable([...Table])
+            }}
+          >
+            {Allowed[i] ? i : ""}
+          </div>
+        })}
       </div>)}
     </div>
   }
@@ -87,13 +97,6 @@ function App() {
                   ...rowi % 3 == 2 ? { borderBottom: "3px solid black" } : {},
                   ...i % 3 == 0 ? { borderLeft: "3px solid black" } : {},
                   ...i % 3 == 2 ? { borderRight: "3px solid black" } : {},
-                }}
-                onClick={() => {
-                  if (!Table[rowi][i][selected])
-                    throw new Error("Cannot place here")
-
-                  UpdateTable(rowi, i, selected)
-                  setTable([...Table])
                 }}
               >
                 <Cell row={rowi} col={i} />
