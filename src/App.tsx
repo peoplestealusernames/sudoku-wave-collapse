@@ -18,11 +18,20 @@ function App() {
     <div className="App">
       <div style={{ display: "table" }}>
         {Table.map((row, rowi) =>
-          <div key={rowi} style={{ display: "table-row" }}>
+          <div
+            key={rowi}
+            style={{ display: "table-row" }}
+          >
             {row.map((n, i) => {
               return <div
                 className="Cell"
                 key={i}
+                style={{
+                  ...rowi % 3 == 0 ? { borderTop: "3px solid black" } : {},
+                  ...rowi % 3 == 2 ? { borderBottom: "3px solid black" } : {},
+                  ...i % 3 == 0 ? { borderLeft: "3px solid black" } : {},
+                  ...i % 3 == 2 ? { borderRight: "3px solid black" } : {},
+                }}
               >
                 {n == 0 ? "" : n}
               </div>
