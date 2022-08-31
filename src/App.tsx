@@ -6,16 +6,17 @@ type sudokuN = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
 type sudokuSelector = Exclude<sudokuN, 0>
 
 function App() {
-  const Table: sudokuN[][] = []
-
+  const [Table, setTable] = useState<sudokuN[][]>([])
   const [selected, setselected] = useState<sudokuSelector>(1)
 
-  for (let row = 0; row < 9; row++) {
-    Table[row] = []
-    for (let i = 0; i < 9; i++) {
-      Table[row][i] = 0
+  useMemo(() => {
+    for (let row = 0; row < 9; row++) {
+      Table[row] = []
+      for (let i = 0; i < 9; i++) {
+        Table[row][i] = 0
+      }
     }
-  }
+  }, [])
 
   return (
     <div className="App">
