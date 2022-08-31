@@ -1,5 +1,4 @@
-import React, { useMemo, useState } from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
 
 type sudokuN = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
