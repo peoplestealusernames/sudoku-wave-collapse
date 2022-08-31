@@ -96,10 +96,10 @@ function App() {
                 key={i}
                 className="Cell"
                 style={{
-                  ...rowi % 3 == 0 ? { borderTop: "3px solid black" } : {},
-                  ...rowi % 3 == 2 ? { borderBottom: "3px solid black" } : {},
-                  ...i % 3 == 0 ? { borderLeft: "3px solid black" } : {},
-                  ...i % 3 == 2 ? { borderRight: "3px solid black" } : {},
+                  ...rowi % 3 === 0 ? { borderTop: "3px solid black" } : {},
+                  ...rowi % 3 === 2 ? { borderBottom: "3px solid black" } : {},
+                  ...i % 3 === 0 ? { borderLeft: "3px solid black" } : {},
+                  ...i % 3 === 2 ? { borderRight: "3px solid black" } : {},
                 }}
               >
                 <Cell row={rowi} col={i} />
