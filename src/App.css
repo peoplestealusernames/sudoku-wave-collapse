@@ -23,9 +23,9 @@
 
 .CellSelect {
   display: table-cell;
-  width: 15px;
-  height: 15px;
-  font-size: 12px;
+  width: 18px;
+  height: 18px;
+  font-size: 14px;
   justify-content: center;
   align-items: center;
   align-content: center;
