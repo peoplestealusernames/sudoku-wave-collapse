@@ -11,6 +11,7 @@ const ButtonStyle: React.CSSProperties = {
 export function RightPanel(props: {
     Table: boolean[][][]
     CallUpdate: (row: number, col: number, n: number) => void
+    ResetTable: () => void
 }) {
     const [timer, settimer] = useState<undefined | NodeJS.Timer>(undefined)
 
@@ -49,6 +50,12 @@ export function RightPanel(props: {
     }
 
     return <div id="right panel" className="RightPanel">
+        <div
+            style={ButtonStyle}
+            onClick={props.ResetTable}
+        >
+            Reset
+        </div>
         <div
             style={ButtonStyle}
             onClick={() => { while (true) { Step() } }}

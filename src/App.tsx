@@ -15,6 +15,18 @@ function App() {
     )
   ) //True= placeable
 
+  function Reset() {
+    setTable(
+      [...new Array(9)].map(() =>
+        [...new Array(9)].map(() =>
+          [...new Array(10)].map((e, i) =>
+            i !== 0
+          )
+        )
+      )
+    )
+  }
+
   function CallUpdate(row: number, column: number, n: number) {
     UpdateTable(row, column, n)
     setTable([...Table])
@@ -82,7 +94,7 @@ function App() {
   return (
     <div className="App">
       <LeftPanel Table={Table} SetTable={setTable} />
-      <RightPanel Table={Table} CallUpdate={CallUpdate} />
+      <RightPanel Table={Table} CallUpdate={CallUpdate} ResetTable={Reset} />
       <div id="board" style={{ display: "table" }}>
         {Table.map((row, rowi) =>
           <div
