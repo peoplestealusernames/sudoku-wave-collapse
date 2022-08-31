@@ -24,7 +24,7 @@ function App() {
                 className="Cell"
                 key={i}
               >
-                {n}
+                {n == 0 ? "" : n}
               </div>
             })
             }
