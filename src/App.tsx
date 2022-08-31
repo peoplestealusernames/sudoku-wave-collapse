@@ -27,6 +27,15 @@ function App() {
     for (let i = 0; i < 9; i++)
       if (Table[column][i] === n) return false
 
+    return CheckCell(Math.floor(row / 3), Math.floor(column / 3), n)
+  }
+
+  function CheckCell(gridrow: number, gridcolumn: number, n: sudokuN) {
+    for (let r = 0; r < 3; r++)
+      for (let c = 0; c < 3; c++)
+        if (Table[r + gridrow * 3][c + gridcolumn * 3] === n)
+          return false
+
     return true
   }
 
