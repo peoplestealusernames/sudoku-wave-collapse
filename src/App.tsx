@@ -78,7 +78,7 @@ function App() {
 
   return (
     <div className="App">
-      <div style={{ display: "table" }}>
+      <div id="board" style={{ display: "table" }}>
         {Table.map((row, rowi) =>
           <div
             key={rowi}
