@@ -42,6 +42,22 @@ function App() {
         Table[r + gridrow * 3][c + gridcolumn * 3][n] = false
   }
 
+  function Cell(props: {
+    row: number,
+    col: number
+  }) {
+    const Allowed = Table[props.row][props.col]
+
+    //{Allowed[col + row * 3] ? col + row * 3 : ""}
+    return <div style={{ display: "table" }}>
+      {[...new Array(3)].map((e, row) => <div key={row} style={{ display: "table-row" }}>
+        {[...new Array(3)].map((e, col) => <div key={col} className="CellSelect">
+          {Allowed[1 + col + row * 3] ? 1 + col + row * 3 : ""}
+        </div>)}
+      </div>)}
+    </div>
+  }
+
   return (
     <div className="App">
       <div style={{ position: "absolute", top: "0px", border: "1px solid black" }}>
@@ -80,7 +96,7 @@ function App() {
                   setTable([...Table])
                 }}
               >
-                {n.map((e, i) => e ? i : "")}
+                <Cell row={rowi} col={i} />
               </div>
             })
             }

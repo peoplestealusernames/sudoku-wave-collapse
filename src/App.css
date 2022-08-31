@@ -10,13 +10,27 @@
 
 .Cell {
   display: table-cell;
-  width: 25px;
-  height: 25px;
+  width: fit-content;
+  height: fit-content;
   justify-content: center;
   align-items: center;
   align-content: center;
   vertical-align: middle;
   background-color: rgb(140, 140, 140);
   border: 1px solid black;
+  user-select: none;
+}
+
+.CellSelect {
+  display: table-cell;
+  width: 15px;
+  height: 15px;
+  font-size: 12px;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  vertical-align: middle;
+  background-color: rgb(200, 200, 220);
+  border: 1px solid rgb(25, 25, 75);
   user-select: none;
 }
