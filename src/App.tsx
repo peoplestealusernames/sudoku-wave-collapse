@@ -3,11 +3,12 @@ import logo from './logo.svg';
 import './App.css';
 
 type sudokuN = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
+type sudokuSelector = Exclude<sudokuN, 0>
 
 function App() {
   const Table: sudokuN[][] = []
 
-  const [selected, setselected] = useState<sudokuN>(0)
+  const [selected, setselected] = useState<sudokuSelector>(1)
 
   for (let row = 0; row < 9; row++) {
     Table[row] = []
@@ -24,7 +25,7 @@ function App() {
             className='Cell'
             key={i}
             style={{ backgroundColor: i + 1 === selected ? "red" : "white" }}
-            onClick={() => { setselected((i + 1) as sudokuN) }}
+            onClick={() => { setselected((i + 1) as sudokuSelector) }}
           >
             {i + 1}
           </div>
