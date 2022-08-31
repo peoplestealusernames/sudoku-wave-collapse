@@ -15,6 +15,11 @@ function App() {
     )
   ) //True= placeable
 
+  function CallUpdate(row: number, column: number, n: number) {
+    UpdateTable(row, column, n)
+    setTable([...Table])
+  }
+
   function UpdateTable(row: number, column: number, n: number) {
     Table[row][column].forEach((v, i) => Table[row][column][i] = false)
 
@@ -61,8 +66,7 @@ function App() {
               if (!Table[props.row][props.col][i])
                 throw new Error("Cannot place here")
 
-              UpdateTable(props.row, props.col, i as number)
-              setTable([...Table])
+              CallUpdate(props.row, props.col, i as number)
             }}
           >
             {Allowed[i] ? i : ""}
