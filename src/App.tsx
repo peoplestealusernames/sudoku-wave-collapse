@@ -14,7 +14,7 @@ function App() {
       Table[row] = []
       for (let col = 0; col < 9; col++) {
         Table[row][col] = []
-        for (let i = 1; i < 9; i++) {
+        for (let i = 1; i < 10; i++) {
           Table[row][col][i] = true
         }
       }
