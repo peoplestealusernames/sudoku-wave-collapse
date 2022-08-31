@@ -20,6 +20,16 @@ function App() {
     setTable([...Table])
   }, [])
 
+  function Checker(row: number, column: number, n: sudokuN) {
+    for (let i = 0; i < 9; i++)
+      if (Table[i][row] === n) return false
+
+    for (let i = 0; i < 9; i++)
+      if (Table[column][i] === n) return false
+
+    return true
+  }
+
   return (
     <div className="App">
       <div style={{ position: "absolute", top: "0px", border: "1px solid black" }}>
@@ -51,6 +61,9 @@ function App() {
                   ...i % 3 == 2 ? { borderRight: "3px solid black" } : {},
                 }}
                 onClick={() => {
+                  if (!Checker(rowi, i, selected))
+                    throw new Error("Cannot place here")
+
                   Table[rowi][i] = selected
                   setTable([...Table])
                 }}
