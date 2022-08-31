@@ -23,25 +23,6 @@ function App() {
     setTable([...Table])
   }, [])
 
-  function Checker(row: number, column: number, n: sudokuN) {
-    for (let i = 0; i < 9; i++)
-      if (!Table[row][i][n]) return false
-
-    for (let i = 0; i < 9; i++)
-      if (!Table[i][column][n]) return false
-
-    return CheckCell(Math.floor(row / 3), Math.floor(column / 3), n)
-  }
-
-  function CheckCell(gridrow: number, gridcolumn: number, n: sudokuN) {
-    for (let r = 0; r < 3; r++)
-      for (let c = 0; c < 3; c++)
-        if (!Table[r + gridrow * 3][c + gridcolumn * 3][n])
-          return false
-
-    return true
-  }
-
   function UpdateTable(row: number, column: number, n: sudokuN) {
     for (let i = 0; i < 9; i++)
       Table[row][i][n] = false
@@ -92,7 +73,7 @@ function App() {
                   ...i % 3 == 2 ? { borderRight: "3px solid black" } : {},
                 }}
                 onClick={() => {
-                  if (!Checker(rowi, i, selected))
+                  if (!Table[rowi][i][selected])
                     throw new Error("Cannot place here")
 
                   UpdateTable(rowi, i, selected)
