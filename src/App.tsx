@@ -6,14 +6,17 @@ type sudokuN = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
 type sudokuSelector = Exclude<sudokuN, 0>
 
 function App() {
-  const [Table, setTable] = useState<sudokuN[][]>([])
+  const [Table, setTable] = useState<boolean[][][]>([]) //True= placeable
   const [selected, setselected] = useState<sudokuSelector>(1)
 
   useMemo(() => {
     for (let row = 0; row < 9; row++) {
       Table[row] = []
-      for (let i = 0; i < 9; i++) {
-        Table[row][i] = 0
+      for (let col = 0; col < 9; col++) {
+        Table[row][col] = []
+        for (let i = 1; i < 9; i++) {
+          Table[row][col][i] = true
+        }
       }
     }
 
@@ -22,10 +25,10 @@ function App() {
 
   function Checker(row: number, column: number, n: sudokuN) {
     for (let i = 0; i < 9; i++)
-      if (Table[i][row] === n) return false
+      if (!Table[row][i][n]) return false
 
     for (let i = 0; i < 9; i++)
-      if (Table[column][i] === n) return false
+      if (!Table[i][column][n]) return false
 
     return CheckCell(Math.floor(row / 3), Math.floor(column / 3), n)
   }
@@ -33,10 +36,29 @@ function App() {
   function CheckCell(gridrow: number, gridcolumn: number, n: sudokuN) {
     for (let r = 0; r < 3; r++)
       for (let c = 0; c < 3; c++)
-        if (Table[r + gridrow * 3][c + gridcolumn * 3] === n)
+        if (!Table[r + gridrow * 3][c + gridcolumn * 3][n])
           return false
 
     return true
+  }
+
+  function UpdateTable(row: number, column: number, n: sudokuN) {
+    for (let i = 0; i < 9; i++)
+      Table[row][i][n] = false
+
+    for (let i = 0; i < 9; i++)
+      Table[i][column][n] = false
+
+    UpdateCell(Math.floor(row / 3), Math.floor(column / 3), n)
+
+    Table[row][column].forEach((v, i) => Table[row][column][i] = false)
+    Table[row][column][n] = true
+  }
+
+  function UpdateCell(gridrow: number, gridcolumn: number, n: sudokuN) {
+    for (let r = 0; r < 3; r++)
+      for (let c = 0; c < 3; c++)
+        Table[r + gridrow * 3][c + gridcolumn * 3][n] = false
   }
 
   return (
@@ -61,8 +83,8 @@ function App() {
           >
             {row.map((n, i) => {
               return <div
-                className="Cell"
                 key={i}
+                className="Cell"
                 style={{
                   ...rowi % 3 == 0 ? { borderTop: "3px solid black" } : {},
                   ...rowi % 3 == 2 ? { borderBottom: "3px solid black" } : {},
@@ -73,11 +95,11 @@ function App() {
                   if (!Checker(rowi, i, selected))
                     throw new Error("Cannot place here")
 
-                  Table[rowi][i] = selected
+                  UpdateTable(rowi, i, selected)
                   setTable([...Table])
                 }}
               >
-                {n === 0 ? "" : n}
+                {n.map((e, i) => e ? i : "")}
               </div>
             })
             }
