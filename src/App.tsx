@@ -45,7 +45,7 @@ function App() {
   return (
     <div className="App">
       <div style={{ position: "absolute", top: "0px", border: "1px solid black" }}>
-        {[...new Array(8)].map((e, i) => {
+        {[...new Array(9)].map((e, i) => {
           return <div
             className='Cell'
             key={i}
