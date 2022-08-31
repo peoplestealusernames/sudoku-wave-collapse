@@ -94,7 +94,7 @@ function App() {
                 key={i}
                 className="Cell"
                 style={{
-                  backgroundColor: `rgb(${r}, ${g}, 0)`,
+                  backgroundColor: `rgb(${r * 1.25}, ${g * 1.25}, 0)`,
                   ...rowi % 3 === 0 ? { borderTop: "3px solid black" } : {},
                   ...rowi % 3 === 2 ? { borderBottom: "3px solid black" } : {},
                   ...i % 3 === 0 ? { borderLeft: "3px solid black" } : {},
