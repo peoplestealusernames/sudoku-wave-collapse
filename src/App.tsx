@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
+import { LeftPanel } from './LeftPanel';
 
 type sudokuN = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
 
@@ -78,6 +79,7 @@ function App() {
 
   return (
     <div className="App">
+      <LeftPanel Table={Table} />
       <div id="board" style={{ display: "table" }}>
         {Table.map((row, rowi) =>
           <div
