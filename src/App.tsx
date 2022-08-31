@@ -53,7 +53,7 @@ function App() {
   }
 
   function GetAllowed(row: number, column: number) {
-    const Ret = Table[row][column].flatMap((e, i) => { if (e) return i })
+    const Ret = Table[row][column].map((e, i) => e ? i : undefined)
     return Ret.filter((e) => e)
   }
 
