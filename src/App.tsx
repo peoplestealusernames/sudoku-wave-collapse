@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
 import { LeftPanel } from './LeftPanel';
+import { GetAllowed } from './misc';
 import { RightPanel } from './RightPanel';
 
 function App() {
@@ -39,15 +40,10 @@ function App() {
 
     Table[row][column][n] = false
 
-    const allowed = GetAllowed(row, column)
+    const allowed = GetAllowed(Table, row, column)
     if (allowed.length === 1)
       UpdateTable(row, column, allowed[0] as number)
 
-  }
-
-  function GetAllowed(row: number, column: number) {
-    const Ret = Table[row][column].map((e, i) => e ? i : undefined)
-    return Ret.filter((e) => e)
   }
 
   function Cell(props: {
@@ -87,7 +83,7 @@ function App() {
             style={{ display: "table-row" }}
           >
             {row.map((n, i) => {
-              const percent = (GetAllowed(rowi, i).length - 1) / 8
+              const percent = (GetAllowed(Table, rowi, i).length - 1) / 8
 
               const r = 255 * (1 - percent)
               const g = 255 * percent
