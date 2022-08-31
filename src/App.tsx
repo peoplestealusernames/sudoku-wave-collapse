@@ -48,8 +48,12 @@ function App() {
                   ...i % 3 == 0 ? { borderLeft: "3px solid black" } : {},
                   ...i % 3 == 2 ? { borderRight: "3px solid black" } : {},
                 }}
+                onClick={() => {
+                  Table[rowi][i] = selected
+                  setTable([...Table])
+                }}
               >
-                {n == 0 ? "" : n}
+                {n === 0 ? "" : n}
               </div>
             })
             }
