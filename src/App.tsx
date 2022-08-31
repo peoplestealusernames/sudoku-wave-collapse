@@ -22,22 +22,39 @@ function App() {
   }, [])
 
   function UpdateTable(row: number, column: number, n: sudokuN) {
-    for (let i = 0; i < 9; i++)
-      Table[row][i][n] = false
+    Table[row][column].forEach((v, i) => Table[row][column][i] = false)
 
     for (let i = 0; i < 9; i++)
-      Table[i][column][n] = false
+      DissableCell(row, i, n)
+
+    for (let i = 0; i < 9; i++)
+      DissableCell(i, column, n)
 
     UpdateCell(Math.floor(row / 3), Math.floor(column / 3), n)
-
-    Table[row][column].forEach((v, i) => Table[row][column][i] = false)
     Table[row][column][n] = true
   }
 
   function UpdateCell(gridrow: number, gridcolumn: number, n: sudokuN) {
     for (let r = 0; r < 3; r++)
       for (let c = 0; c < 3; c++)
-        Table[r + gridrow * 3][c + gridcolumn * 3][n] = false
+        DissableCell(r + gridrow * 3, c + gridcolumn * 3, n)
+  }
+
+  function DissableCell(row: number, column: number, n: sudokuN) {
+    if (Table[row][column][n] === false)
+      return
+
+    Table[row][column][n] = false
+
+    const allowed = GetAllowed(row, column)
+    if (allowed.length === 1)
+      UpdateTable(row, column, allowed[0] as sudokuN)
+
+  }
+
+  function GetAllowed(row: number, column: number) {
+    const Ret = Table[row][column].flatMap((e, i) => { if (e) return i })
+    return Ret.filter((e) => e)
   }
 
   function Cell(props: {
