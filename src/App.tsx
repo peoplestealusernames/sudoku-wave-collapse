@@ -68,6 +68,9 @@ function App() {
 
               CallUpdate(props.row, props.col, i as number)
             }}
+            style={{
+              cursor: Allowed[i] && Allowed.length > 0 ? "pointer" : "default",
+            }}
           >
             {Allowed[i] ? i : ""}
           </div>
