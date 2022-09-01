@@ -76,6 +76,11 @@ function App() {
         {Choices[0]}
       </div>
 
+    if (Choices.length === 0)
+      return <div className="CellSelectLast">
+        ERR
+      </div>
+
     return <div style={{ display: "table" }}>
       {[...new Array(3)].map((e, row) => <div key={row} style={{ display: "table-row" }}>
         {[...new Array(3)].map((e, col) => {
