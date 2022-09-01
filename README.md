@@ -3,8 +3,10 @@
 
 This project is a recreation of Sudoku using wave function collapse ([read below](https://github.com/peoplestealusernames/sudoku-wave-collapse#wave-function-collapse)).
 
+![alt text](https://raw.githubusercontent.com/peoplestealusernames/sudoku-wave-collapse/master/Board.png?raw=true)
+
 ## Why sudoku
-Sudoku is a great game for testing wave function collapse because it has simple rules with cascading effects.
+Sudoku is a great game for testing wave function collapse because it has [simple rules](https://github.com/peoplestealusernames/sudoku-wave-collapse#soduku-rules) with cascading effects.
 - Because its a game it was made for human interation which means its a user friendly experience.
 - Because of its simple rules its a very good trial run of wave function collapse.
 
