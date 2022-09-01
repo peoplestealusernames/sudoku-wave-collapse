@@ -61,13 +61,13 @@ export function LeftPanel(props: {
             progress={Math.round((1 - (remaining / 729)) * 1000) / 10}
         />
         <span style={BarStyle}>
-            Total locked cells: {locked}
+            Locked: {locked}
         </span>
         <span style={BarStyle}>
-            Total choices: {remaining}
+            Choices: {remaining}
         </span>
         <span style={BarStyle}>
-            Total errors: {errors}
+            Errors: {errors}
         </span>
     </div>
 }
