@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { GetAllowed, GetRandomValue } from "./misc"
+import { GetAllowed, GetRandomIndex, GetRandomValue } from "./misc"
 
 const ButtonStyle: React.CSSProperties = {
     margin: "1px",
@@ -20,6 +20,15 @@ export function RightPanel(props: {
     function Step() {
         //TODO: redo if err is created
         const [worked, pass] = SolveStep(props.Table)
+
+        if (!worked || !pass)
+            throw new Error("Could not step")
+        props.CallUpdate(...pass)
+    }
+
+    function RandomStep() {
+        //TODO: redo if err is created
+        const [worked, pass] = GetRandomStep(props.Table)
 
         if (!worked || !pass)
             throw new Error("Could not step")
@@ -77,6 +86,12 @@ export function RightPanel(props: {
         >
             Step Collapse
         </div>
+        <div
+            style={ButtonStyle}
+            onClick={RandomStep}
+        >
+            Collapse Random
+        </div>
     </div>
 }
 
@@ -106,4 +121,30 @@ function SolveStep(Table: boolean[][][]): [false] | [true, [row: number, col: nu
     const n = GetRandomValue(allowed)
 
     return [true, [cell[0], cell[1], n]]
+}
+
+function GetRandomStep(Table: boolean[][][]): [false] | [true, [row: number, col: number, n: number]] {
+    const [_, cell] = GetRandomTile(Table)
+
+    if (!cell)
+        throw new Error("Random cell not found")
+
+    const allowed = GetAllowed(Table, cell[0], cell[1])
+    const n = GetRandomValue(allowed)
+
+    return [true, [cell[0], cell[1], n]]
+}
+
+function GetRandomTile(Table: boolean[][][]): [false] | [true, [row: number, col: number]] {
+    for (let i = 0; i < 1000; i++) {
+        const rowi = GetRandomIndex(Table)
+        const coli = GetRandomIndex(Table[rowi])
+        const l = GetAllowed(Table, rowi, coli).length
+
+        if (l < 2)
+            continue
+
+        return [true, [rowi, coli]]
+    }
+    return [false]
 }
