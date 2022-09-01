@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+import { AiOutlineInfoCircle } from "react-icons/ai"
 import { ProgressBar } from "./ProgressBar"
 
 const BarStyle: React.CSSProperties = {
@@ -39,17 +40,25 @@ export function LeftPanel(props: {
     }, [props.Table])
 
     return <div id="left panel" className="LeftPanel">
+        <AiOutlineInfoCircle style={{
+            position: "absolute",
+            top: "-16px",
+            left: "calc(50% - 15px)",
+            width: "30px",
+            height: "30px",
+            backgroundImage: "radial-gradient(black 10px, rgba(0,0,0,0) 10px)",
+        }} />
+        <span style={{
+            ...BarStyle,
+            position: "absolute",
+            top: "15px"
+        }}>
+            Click on number to start collapse
+        </span>
         <ProgressBar
             style={BarStyle}
             progress={Math.round((1 - (remaining / 729)) * 1000) / 10}
         />
-        <span style={{
-            ...BarStyle,
-            position: "absolute",
-            top: "10px"
-        }}>
-            Click on number to start collapse
-        </span>
         <span style={BarStyle}>
             Total locked cells: {locked}
         </span>
