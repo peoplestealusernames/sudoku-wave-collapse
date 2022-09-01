@@ -39,6 +39,13 @@ export function LeftPanel(props: {
     }, [props.Table])
 
     return <div id="left panel" className="LeftPanel">
+        <span style={{
+            ...BarStyle,
+            position: "absolute",
+            top: "10px"
+        }}>
+            Click on number to start collapse
+        </span>
         <span style={BarStyle}>
             Total locked cells: {locked}
         </span>
