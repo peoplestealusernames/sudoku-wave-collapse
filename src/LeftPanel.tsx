@@ -1,6 +1,12 @@
 import { useState, useEffect } from "react"
 
-
+const BarStyle: React.CSSProperties = {
+    margin: "1px",
+    padding: "2px",
+    border: "1px solid rgb(60,60,75)",
+    borderRadius: "5px",
+    width: "90%",
+}
 
 export function LeftPanel(props: {
     Table: boolean[][][]
@@ -33,13 +39,13 @@ export function LeftPanel(props: {
     }, [props.Table])
 
     return <div id="left panel" className="LeftPanel">
-        <span>
+        <span style={BarStyle}>
             Total locked cells: {locked}
         </span>
-        <span>
+        <span style={BarStyle}>
             Total choices: {remaining}
         </span>
-        <span>
+        <span style={BarStyle}>
             Total errors: {errors}
         </span>
     </div>
