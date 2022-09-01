@@ -72,8 +72,8 @@
 
 .CellSelect {
   display: table-cell;
-  width: 18px;
-  height: 18px;
+  width: 17px;
+  height: 17px;
   font-size: 14px;
   justify-content: center;
   align-items: center;
@@ -85,8 +85,8 @@
 
 .CellSelectLast {
   display: table-cell;
-  width: 54px;
-  height: 54px;
+  width: 51px;
+  height: 51px;
   font-size: 25px;
   justify-content: center;
   align-items: center;
