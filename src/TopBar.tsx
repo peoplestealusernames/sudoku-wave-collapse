@@ -27,16 +27,17 @@ export function TopBar() {
             width: "100%",
             alignContent: "center",
             alignItems: "center",
-            justifyContent: "center",
+            justifyContent: "start",
             justifyItems: "center",
             verticalAlign: "center",
             borderBottom: "2px solid grey",
             color: "rgb(175,175,200)",
-            fontSize: "20px"
+            fontSize: "25px",
+            userSelect: "none",
         }}
     >
-        <a style={ItemStyle} href="https://github.com/peoplestealusernames/sudoku-wave-collapse#readme">
-            <AiOutlineGithub size={23} />
+        <a style={{ ...ItemStyle, marginLeft: "10px" }} href="https://github.com/peoplestealusernames/sudoku-wave-collapse#readme">
+            <AiOutlineGithub size={27} />
             Github
         </a>
     </div>
