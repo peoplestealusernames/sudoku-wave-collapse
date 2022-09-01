@@ -11,7 +11,7 @@ const ItemStyle: React.CSSProperties = {
     justifyContent: "center",
     justifyItems: "center",
     verticalAlign: "center",
-    color: "rgb(175,175,200)",
+    color: "rgb(200,200,210)",
 }
 
 export function TopBar() {
@@ -27,18 +27,29 @@ export function TopBar() {
             width: "100%",
             alignContent: "center",
             alignItems: "center",
-            justifyContent: "start",
+            justifyContent: "center",
             justifyItems: "center",
             verticalAlign: "center",
             borderBottom: "2px solid grey",
-            color: "rgb(175,175,200)",
-            fontSize: "25px",
+            color: "rgb(220,220,230)",
+            fontSize: "26px",
             userSelect: "none",
         }}
     >
-        <a style={{ ...ItemStyle, marginLeft: "10px" }} href="https://github.com/peoplestealusernames/sudoku-wave-collapse#readme">
-            <AiOutlineGithub size={27} />
-            Github
-        </a>
+        <span
+            style={{
+                ...ItemStyle
+            }}
+        >
+            Sudoku Collapse
+        </span>
+        <AiOutlineGithub
+            size={27}
+            href="https://github.com/peoplestealusernames/sudoku-wave-collapse#readme"
+            style={{
+                position: "absolute",
+                right: "10px"
+            }}
+        />
     </div>
 }
