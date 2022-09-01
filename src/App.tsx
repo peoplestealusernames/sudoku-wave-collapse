@@ -69,6 +69,13 @@ function App() {
   }) {
     const Allowed = Table[props.row][props.col]
 
+    const Choices = GetAllowed(Table, props.row, props.col)
+
+    if (Choices.length === 1)
+      return <div className="CellSelectLast">
+        {Choices[0]}
+      </div>
+
     return <div style={{ display: "table" }}>
       {[...new Array(3)].map((e, row) => <div key={row} style={{ display: "table-row" }}>
         {[...new Array(3)].map((e, col) => {
