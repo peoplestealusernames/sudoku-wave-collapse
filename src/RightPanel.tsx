@@ -6,6 +6,7 @@ const ButtonStyle: React.CSSProperties = {
     padding: "2px",
     border: "1px solid rgb(60,60,75)",
     borderRadius: "5px",
+    cursor: "pointer"
 }
 
 export function RightPanel(props: {
