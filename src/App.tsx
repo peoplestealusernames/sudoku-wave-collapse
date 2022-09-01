@@ -107,7 +107,7 @@ function App() {
     <div className="App">
       <LeftPanel Table={Table} SetTable={setTable} />
       <RightPanel Table={Table} CallUpdate={CallUpdate} ResetTable={Reset} />
-      <div id="board" style={{ display: "table" }}>
+      <div id="board" className="Board">
         {Table.map((row, rowi) =>
           <div
             key={rowi}
