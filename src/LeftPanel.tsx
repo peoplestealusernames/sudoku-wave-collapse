@@ -56,7 +56,8 @@ export function LeftPanel(props: {
             Click on number to start collapse
         </span>
         <ProgressBar
-            style={BarStyle}
+            style={{ ...BarStyle, backgroundColor: "rgb(25, 25, 35)" }}
+            greenstyle={{ backgroundColor: "rgb(50, 50, 60)" }}
             progress={Math.round((1 - (remaining / 729)) * 1000) / 10}
         />
         <span style={BarStyle}>
