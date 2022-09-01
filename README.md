@@ -29,6 +29,6 @@ While removing numbers a update function is called which:
 This leads to a cascading effect where towards the end where lowering entropy may collapse the whole set.
 
 ## Soduku rules
-Each row and or column can only contain a number once.
-Every 3x3 grid (Defined by thicker border) can only contain one number once.
-The game is finish when all squares have a number or no more progress can be made.
+* Each row and or column can only contain a number once.
+* Every 3x3 grid (Defined by thicker border) can only contain one number once.
+* The game is finish when all squares have a number or no more progress can be made.
