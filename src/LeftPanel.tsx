@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+import { ProgressBar } from "./ProgressBar"
 
 const BarStyle: React.CSSProperties = {
     margin: "1px",
@@ -39,6 +40,10 @@ export function LeftPanel(props: {
     }, [props.Table])
 
     return <div id="left panel" className="LeftPanel">
+        <ProgressBar
+            style={BarStyle}
+            progress={(1 - (remaining / 729)) * 100}
+        />
         <span style={{
             ...BarStyle,
             position: "absolute",
