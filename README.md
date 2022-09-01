@@ -1,46 +1,31 @@
-# Getting Started with Create React App
+# Sudoku function collapse in react
+[Website link](https://peoplestealusernames.github.io/sudoku-wave-collapse/)
+This project is a recreation of Sudoku using wave function collapse ([read below](https://github.com/peoplestealusernames/sudoku-wave-collapse#wave-function-collapse)).
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Wave function collapse
+Wave function collapse is a generation algorithm, that follows predefined rules and a input to generate an output.
+It does this using entropy. Entropy is a value the amount of options remaining.
+Step by step it takes the cell with the least entropy, and collapses it by picking one of the remaining options.
+From there it remaps the Entropy of the cells by removing cells that would violate the rules.
+    For example if you had xyz, but x cannot be next to z.
+    Then if it places a x or a z its neighbor can no longer be its opposite.
+    This would decrease the cells entropy and on larger rule sets could lead to a larger collapse.
+It repeats this process until the whole set is collapsed.
+### Wave function in this project
+This project using a simple tiled version of wave function collapse with soduku rules.
+Sudoku rules are listed [below](https://github.com/peoplestealusernames/sudoku-wave-collapse#soduku-rules).
+Using soduku rules this project has a three wave function collapse rules.
+In order of execution:
+    1. Remove number from columns
+    2. Remove number from row
+    3. Remove number from 3x3 grid
 
-## Available Scripts
+While removing numbers a update function is called which:
+    If the cell has 1 remaining option rerun setter with the last option
 
-In the project directory, you can run:
+This leads to a cascading effect where towards the end where lowering entropy may collapse the whole set.
 
-### `yarn start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Soduku rules
+Each row and or column can only contain a number once.
+Every 3x3 grid (Defined by thicker border) can only contain one number once.
+The game is finish when all squares have a number or no more progress can be made.
