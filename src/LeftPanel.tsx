@@ -42,7 +42,7 @@ export function LeftPanel(props: {
     return <div id="left panel" className="LeftPanel">
         <ProgressBar
             style={BarStyle}
-            progress={(1 - (remaining / 729)) * 100}
+            progress={Math.round((1 - (remaining / 729)) * 1000) / 10}
         />
         <span style={{
             ...BarStyle,
