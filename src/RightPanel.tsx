@@ -16,6 +16,7 @@ export function RightPanel(props: {
     const [timer, settimer] = useState<undefined | NodeJS.Timer>(undefined)
 
     function Step() {
+        //TODO: redo if err is created
         const [worked, pass] = SolveStep(props.Table)
 
         if (!worked || !pass)
