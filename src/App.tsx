@@ -3,6 +3,7 @@ import './App.css';
 import { LeftPanel } from './LeftPanel';
 import { GetAllowed } from './misc';
 import { RightPanel } from './RightPanel';
+import { TopBar } from './TopBar';
 
 function App() {
   const [Table, setTable] = useState<boolean[][][]>(
@@ -105,6 +106,7 @@ function App() {
 
   return (
     <div className="App">
+      <TopBar />
       <LeftPanel Table={Table} SetTable={setTable} />
       <RightPanel Table={Table} CallUpdate={CallUpdate} ResetTable={Reset} />
       <div id="board" className="Board">
