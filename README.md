@@ -7,11 +7,11 @@ Wave function collapse is a generation algorithm, that follows predefined rules 
 It does this using entropy. Entropy is a value the amount of options remaining.
 Step by step it takes the cell with the least entropy, and collapses it by picking one of the remaining options.
 From there it remaps the Entropy of the cells by removing cells that would violate the rules.
-``` 
-    For example if you had xyz, but x cannot be next to z.
-    Then if it places a x or a z its neighbor can no longer be its opposite.
-    This would decrease the cells entropy and on larger rule sets could lead to a larger collapse.
-```
+
+For example if you had xyz, but x cannot be next to z.
+Then if it places a x or a z its neighbor can no longer be its opposite.
+This would decrease the cells entropy and on larger rule sets could lead to a larger collapse.
+
 It repeats this process until the whole set is collapsed.
 ### Wave function in this project
 This project using a simple tiled version of wave function collapse with soduku rules.
