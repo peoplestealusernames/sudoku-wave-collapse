@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { GetAllowed, GetRandomIndex, GetRandomValue } from "./misc"
+import { GoPlay } from "react-icons/go"
 
 const ButtonStyle: React.CSSProperties = {
     margin: "1px",
@@ -62,6 +63,14 @@ export function RightPanel(props: {
     }
 
     return <div id="right panel" className="RightPanel">
+        <GoPlay style={{
+            position: "absolute",
+            top: "-16px",
+            left: "calc(50% - 15px)",
+            width: "30px",
+            height: "30px",
+            backgroundImage: "radial-gradient(black 10px, rgba(0,0,0,0) 10px)",
+        }} />
         <div
             style={ButtonStyle}
             onClick={props.ResetTable}
