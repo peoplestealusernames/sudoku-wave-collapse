@@ -18,17 +18,13 @@ This project using a simple tiled version of wave function collapse with soduku 
 Sudoku rules are listed [below](https://github.com/peoplestealusernames/sudoku-wave-collapse#soduku-rules).
 Using soduku rules this project has a three wave function collapse rules.
 In order of execution:
-``` 
-    1. Remove number from columns
-    2. Remove number from row
-    3. Remove number from 3x3 grid
-```
+1. Remove number from columns
+2. Remove number from row
+3. Remove number from 3x3 grid
 
 While removing numbers a update function is called which:
-```
-    If the cell has 1 remaining option
-        rerun setter with the last option
-```
+- If the cell has 1 remaining option
+- rerun setter with the last option
 
 This leads to a cascading effect where towards the end where lowering entropy may collapse the whole set.
 
