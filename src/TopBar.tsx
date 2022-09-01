@@ -30,10 +30,10 @@ export function TopBar() {
             justifyContent: "center",
             justifyItems: "center",
             verticalAlign: "center",
-            borderBottom: "2px solid grey",
             color: "rgb(220,220,230)",
             fontSize: "26px",
             userSelect: "none",
+            boxShadow: "0px 0px 3px 2px white"
         }}
     >
         <span
