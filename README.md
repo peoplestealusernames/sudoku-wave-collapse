@@ -1,5 +1,6 @@
 # Sudoku function collapse in react
-[Website link](https://peoplestealusernames.github.io/sudoku-wave-collapse/)
+[Project/Website link](https://peoplestealusernames.github.io/sudoku-wave-collapse/)
+
 This project is a recreation of Sudoku using wave function collapse ([read below](https://github.com/peoplestealusernames/sudoku-wave-collapse#wave-function-collapse)).
 
 ## Why sudoku
