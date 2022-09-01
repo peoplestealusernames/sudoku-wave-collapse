@@ -21,7 +21,6 @@ export function LeftPanel(props: {
         let total = 0
         let newLocked = 0
         let newErr = 0
-        console.log("A");
 
         props.Table.forEach(row =>
             row.forEach((e) => {
