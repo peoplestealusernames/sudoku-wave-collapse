@@ -10,6 +10,10 @@ const BarStyle: React.CSSProperties = {
     width: "90%",
 }
 
+const TableStyle: React.CSSProperties = {
+    display: "table-cell",
+}
+
 export function LeftPanel(props: {
     Table: boolean[][][]
     SetTable: (Table: boolean[][][]) => void
@@ -39,6 +43,21 @@ export function LeftPanel(props: {
         setremaining(total - newLocked)
     }, [props.Table])
 
+    const DisplayTable: { display: string, value: any }[] = [
+        {
+            display: "Locked",
+            value: locked
+        },
+        {
+            display: "Choices",
+            value: remaining
+        },
+        {
+            display: "Errors",
+            value: errors
+        }
+    ]
+
     return <div id="left panel" className="LeftPanel">
         <AiOutlineInfoCircle style={{
             position: "absolute",
@@ -60,14 +79,31 @@ export function LeftPanel(props: {
             greenstyle={{ backgroundColor: "rgb(50, 50, 60)" }}
             progress={Math.round((1 - (remaining / 729)) * 1000) / 10}
         />
-        <span style={BarStyle}>
-            Locked: {locked}
-        </span>
-        <span style={BarStyle}>
-            Choices: {remaining}
-        </span>
-        <span style={BarStyle}>
-            Errors: {errors}
-        </span>
+        <div style={{
+            ...BarStyle,
+            paddingLeft: "10px",
+            paddingRight: "10px",
+            display: "table"
+        }}>
+            {DisplayTable.map((e, i) => <div style={{
+                display: "table-row",
+            }}>
+                <span style={{
+                    ...TableStyle,
+                    width: "45%",
+                    textAlign: "left",
+                }}>
+                    {e.display}
+                </span>
+                :
+                <span style={{
+                    ...TableStyle,
+                    width: "45%",
+                    textAlign: "right",
+                }}>
+                    {e.value}
+                </span>
+            </div>)}
+        </div>
     </div>
 }
