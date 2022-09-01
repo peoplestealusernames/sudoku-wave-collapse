@@ -1,12 +1,7 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Wave sudoku",
+  "name": "React sudoku wave function collapse",
   "icons": [
-    {
-      "src": "icon.ico",
-      "sizes": "256x256 128x128 64x64 32x32 16x16",
-      "type": "image/x-icon"
-    },
     {
       "src": "sudoku.png",
       "type": "image/png",
