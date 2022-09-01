@@ -86,13 +86,13 @@
 
 .CellSelectLast {
   display: table-cell;
-  width: 51px;
-  height: 51px;
+  width: 55px;
+  height: 55px;
   font-size: 25px;
   justify-content: center;
   align-items: center;
   align-content: center;
   vertical-align: middle;
-  border: 3px solid rgb(25, 25, 75);
+  border: 1px solid black;
   user-select: none;
 }
