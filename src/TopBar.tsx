@@ -43,13 +43,15 @@ export function TopBar() {
         >
             Sudoku Collapse
         </span>
-        <AiOutlineGithub
-            size={27}
+        <a
             href="https://github.com/peoplestealusernames/sudoku-wave-collapse#readme"
             style={{
+                ...ItemStyle,
                 position: "absolute",
                 right: "10px"
             }}
-        />
+        >
+            <AiOutlineGithub size={27} />
+        </a>
     </div>
 }
